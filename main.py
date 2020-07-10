@@ -13,6 +13,9 @@ workbook = xlrd.open_workbook('data.xlsx', on_demand = True)
 
 worksheet = workbook.sheet_by_name('Sheet1')
 
+
+
+
 time = [worksheet.cell_value(i, 0) for i in range (1709)]
 capacitance_all = [worksheet.cell_value(i, 1) for i in range (1709)]
 plt.figure(1)
