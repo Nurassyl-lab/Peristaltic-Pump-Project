@@ -14,7 +14,8 @@ def butter_lowpass_filter(data, cutoff, fs, order):
 workbook = xlrd.open_workbook('5RPM.xlsx', on_demand = True)
 worksheet = workbook.sheet_by_name('Sheet1') 
 
-#remove comment if you want to plot full signal at 5 RPM
+#remove 8 comments below if you want to plot full signal at 5 RPM
+
 # time = [worksheet.cell_value(i, 0) for i in range (679)]
 # capacitance_all = [worksheet.cell_value(i, 1) for i in range (679)]
 # plt.figure(1)
@@ -106,8 +107,8 @@ cutoff = 1.0
 order = 2
 
 
-# y = cap#comment this line if you want to plot the signal with noise
-y = butter_lowpass_filter(cap, cutoff, fs, order)#comment this line if you want to plot signal without noise
+y = cap#comment this line if you want to plot the signal with noise
+# y = butter_lowpass_filter(cap, cutoff, fs, order)#comment this line if you want to plot signal without noise
 
 #Before FFT
 plt.figure(0)
@@ -135,4 +136,3 @@ y = ifft(y)
 plt.xlabel('TIME')
 plt.plot(y) 
 plt.show()
-#working on low pass filter
