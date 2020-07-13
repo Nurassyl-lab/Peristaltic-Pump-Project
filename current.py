@@ -95,20 +95,24 @@ capacitance_all = capacitance_all - mean
 cap.append(capacitance_all)
 mean = 0
 
-cap = np.array(cap).flatten()
-#scaled the data
+cap = np.array(cap).flatten()#capacitance 
+
+#scale the data
 m = max(cap)
 cap = cap / m
-# plt.plot(time, cap)
 
-fs = 10
-nyq = 0.5 * fs
-cutoff = 1.0
-order = 2
+fs = 10#I thought that I need to choose fs as 0.1, however, when fs is 0.1
+#there is an error ValueError: Digital filter critical frequencies must be 0 < Wn < 1
+#so I have choosen fs 10
+
+nyq = 0.5 * fs#The Nyquist frequency is half the sampling rate.
+
+cutoff = 1.0#The "cutoff" means the cut frequency. Guessing
+order = 2#The "order" determine the accuracy of filter. Guessing
 
 
-y = cap#comment this line if you want to plot the signal with noise
-# y = butter_lowpass_filter(cap, cutoff, fs, order)#comment this line if you want to plot signal without noise
+# y = cap#comment this line if you want to plot the signal with noise
+y = butter_lowpass_filter(cap, cutoff, fs, order)#comment this line if you want to plot signal without noise
 
 #Before FFT
 plt.figure(0)
