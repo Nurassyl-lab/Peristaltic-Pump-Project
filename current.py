@@ -26,74 +26,21 @@ worksheet = workbook.sheet_by_name('Sheet1')
 # plt.show()
 
 cap = []
-#here I'm making a window(24sec - 34sec)
+#here I'm making a window(22.6sec - 45.7sec)
 time = [worksheet.cell_value(i, 0) for i in range (220, 430, 1)]
 
 #windows
-#I did it very stupid, because I can't get used to for loop in python
-
-#1
-
-capacitance_all = [worksheet.cell_value(i, 1) for i in range (220, 250, 1)]
-capacitance_all = np.array(capacitance_all)
-mean = np.mean(capacitance_all)
-capacitance_all = capacitance_all - mean
-cap.append(capacitance_all)
-mean = 0
-
-#2
-capacitance_all = [worksheet.cell_value(i, 1) for i in range (250, 280, 1)]
-capacitance_all = np.array(capacitance_all)
-capacitance_all = np.array(capacitance_all)
-mean = np.mean(capacitance_all)
-capacitance_all = capacitance_all - mean
-cap.append(capacitance_all)
-mean = 0
-
-#3
-capacitance_all = [worksheet.cell_value(i, 1) for i in range (280, 310, 1)]
-capacitance_all = np.array(capacitance_all)
-capacitance_all = np.array(capacitance_all)
-mean = np.mean(capacitance_all)
-capacitance_all = capacitance_all - mean
-cap.append(capacitance_all)
-mean = 0
-
-#4
-capacitance_all = [worksheet.cell_value(i, 1) for i in range (310, 340, 1)]
-capacitance_all = np.array(capacitance_all)
-capacitance_all = np.array(capacitance_all)
-mean = np.mean(capacitance_all)
-capacitance_all = capacitance_all - mean
-cap.append(capacitance_all)
-mean = 0
-
-#5
-capacitance_all = [worksheet.cell_value(i, 1) for i in range (340, 370, 1)]
-capacitance_all = np.array(capacitance_all)
-capacitance_all = np.array(capacitance_all)
-mean = np.mean(capacitance_all)
-capacitance_all = capacitance_all - mean
-cap.append(capacitance_all)
-mean = 0
-
-#6
-capacitance_all = [worksheet.cell_value(i, 1) for i in range (370, 400, 1)]
-capacitance_all = np.array(capacitance_all)
-capacitance_all = np.array(capacitance_all)
-mean = np.mean(capacitance_all)
-capacitance_all = capacitance_all - mean
-cap.append(capacitance_all)
-mean = 0
-
-#7
-capacitance_all = [worksheet.cell_value(i, 1) for i in range (400, 430, 1)]
-capacitance_all = np.array(capacitance_all)
-capacitance_all = np.array(capacitance_all) 
-mean = np.mean(capacitance_all)
-capacitance_all = capacitance_all - mean
-cap.append(capacitance_all)
-mean = 0
+n = 220
+b = 250
+for i in range (7):
+    capacitance_all = [worksheet.cell_value(i, 1) for i in range (n, b, 1)]
+    capacitance_all = np.array(capacitance_all)
+    mean = np.mean(capacitance_all)
+    capacitance_all = capacitance_all - mean
+    cap.append(capacitance_all)
+    mean = 0
+    n+=30
+    b+=30
 
 cap = np.array(cap).flatten()#capacitance 
 
@@ -111,8 +58,8 @@ cutoff = 1.0#The "cutoff" means the cut frequency. Guessing
 order = 2#The "order" determine the accuracy of filter. Guessing
 
 
-# y = cap#comment this line if you want to plot the signal with noise
-y = butter_lowpass_filter(cap, cutoff, fs, order)#comment this line if you want to plot signal without noise
+y = cap#comment this line if you want to plot the signal with noise
+# y = butter_lowpass_filter(cap, cutoff, fs, order)#comment this line if you want to plot signal without noise
 
 #Before FFT
 plt.figure(0)
