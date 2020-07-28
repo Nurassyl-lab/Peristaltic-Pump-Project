@@ -18,15 +18,15 @@ worksheet = workbook.sheet_by_name('Sheet1')
 SELECT = 0
 while SELECT < 7:
     #-------------------------------------------------------------------------
-    RPM_s = [0] * 9
-    RPM_f = [0] * 9
-    window = [0] * 9
-    for_loop = [0] * 9
-    s = [0] * 9
-    c_col = [0] * 9
-    cutoff = [0] * 9
-    rps = [0] * 9
-    rpm = [0] * 9
+    RPM_s = [0] * 7
+    RPM_f = [0] * 7
+    window = [0] * 7
+    for_loop = [0] * 7
+    s = [0] * 7
+    c_col = [0] * 7
+    cutoff = [0] * 7
+    rps = [0] * 7
+    rpm = [0] * 7
     #-------------------------------------------------------------------------
     #1RPM
     RPM_s[0] = 2
@@ -91,15 +91,7 @@ while SELECT < 7:
     c_col[6] = 13
     cutoff[6] = 3
     rps[6] = 0.33
-    #0.2RPM-------------------------------------------------------------------
-    RPM_s[7] = 2
-    RPM_f[7] = 2730
-    window[7] = 681
-    for_loop[7] = 4
-    s[7] = 1
-    c_col[7] = 1
-    cutoff[7] = 0.15
-    rps[7] = 0.016
+    
     t_col = c_col[SELECT] - 1
     #-------------------------------------------------------------------------
     time = [worksheet.cell_value(i, t_col) for i in range (RPM_s[SELECT], RPM_f[SELECT], 1)]
